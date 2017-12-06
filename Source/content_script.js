@@ -23,19 +23,21 @@ if (window.MutationObserver) {
 function walk(node) {
     let child, next;
 
-    switch ( node.nodeType ) {
-        case 1:  // Element
-        case 9:  // Document
-        case 11: // Document fragment
+    switch (node.nodeType) {
+        // Element, Document, DocumentFragment
+        case 1:
+        case 9:
+        case 11:
             child = node.firstChild;
-            while ( child ) {
+            while (child) {
                 next = child.nextSibling;
                 walk(child);
                 child = next;
             }
             break;
 
-        case 3: // Text node
+        // text
+        case 3:
             handleText(node);
             break;
     }
@@ -50,8 +52,8 @@ function handleText(textNode) {
     let oldValue = textNode.nodeValue;
     let v = oldValue;
 
-    v = v.replace(/\bsjw(s?)\b/ig, "skeleton$1");
-    v = v.replace(/\bsocjus\b/ig, "skeletonism");
+    v = v.replace(/\bthe(s?)\b/ig, "skeleton$1");
+    v = v.replace(/\bchrome\b/ig, "skeletonism");
     v = v.replace(/\b(a)n (skeletons?)\b/ig, "$1 $2");
     v = v.replace(/\b(s)ocial justice (warriors?)/ig, "$1keleton $2");
 
