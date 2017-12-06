@@ -1,0 +1,15 @@
+{
+	"manifest_version": 2,
+	"name": "Monkey Business",
+	"version": "0.1",
+	"description": "Replaces words with fun text",
+	"content_scripts":
+	[
+		{
+			"matches": ["*://*/*"],
+			"js": ["content_script.js"],
+			"run_at": "document_end"
+		}
+	]
+}
+
