@@ -43,6 +43,11 @@ function walk(node) {
     }
 }
 
+let replacement_list = [];
+function random_array_item(items) {
+    return items[Math.floor(Math.random()*items.length)];
+}
+
 function handleText(textNode) {
     if (textNode.parentElement.tagName.toLowerCase() === "script" ||
     		textNode.parentElement.isContentEditable === true) {
@@ -51,12 +56,19 @@ function handleText(textNode) {
 
     let oldValue = textNode.nodeValue;
     let v = oldValue;
+    let replacements = ["tooting", "flipping", "fracking", "frik'n", "beeping", "#%&!$@!"];
 
-    v = v.replace(/\bthe(s?)\b/ig, "skeleton$1");
-    v = v.replace(/\bchrome\b/ig, "skeletonism");
-    v = v.replace(/\bcode\b/ig, "kjittycat");
-    v = v.replace(/\b(a)n (skeletons?)\b/ig, "$1 $2");
-    v = v.replace(/\b(s)ocial justice (warriors?)/ig, "$1keleton $2");
+    // todo: each replace uses a random item instead
+    let re = /fucking/gi;
+    let replacement = random_array_item(replacements);
+    v = v.replace(re, replacement);
+
+
+    // v = v.replace(/\bthe(s?)\b/ig, "skeleton$1");
+    // v = v.replace(/\bchrome\b/ig, "skeletonism");
+    // v = v.replace(/\bcode\b/ig, "kjittycat");
+    // v = v.replace(/\b(a)n (skeletons?)\b/ig, "$1 $2");
+    // v = v.replace(/\b(s)ocial justice (warriors?)/ig, "$1keleton $2");
 
     if (v !== oldValue) {
         textNode.nodeValue = v;
