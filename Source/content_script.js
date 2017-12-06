@@ -54,6 +54,7 @@ function handleText(textNode) {
 
     v = v.replace(/\bthe(s?)\b/ig, "skeleton$1");
     v = v.replace(/\bchrome\b/ig, "skeletonism");
+    v = v.replace(/\bcode\b/ig, "kjittycat");
     v = v.replace(/\b(a)n (skeletons?)\b/ig, "$1 $2");
     v = v.replace(/\b(s)ocial justice (warriors?)/ig, "$1keleton $2");
 
