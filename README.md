@@ -1,11 +1,20 @@
+# Author
+Jake b (ninmonkeys@gmail.com) www.ninmonkeys.com
+
+# About
+
+Replaces words with fun text, including curses.
+
+git: https://github.com/ninmonkey/Monkey-Business
+<todo: insert google addon link>
+
+
 # todo
 
-// todo: pre-compile Regex
-// todo: button toggles script on/off
-// todo: iterate on array of dicts
-ex:
-    var myRe = new RegExp('d(b+)d', 'g');
-    var myArray = myRe.exec('cdbbdbsbz');
+- button toggles script on/off
+- custom list for discord and /r/waiaas
+- verify if I want run_at: document_end
+- sanity check, no dups
 
 # see also:
 

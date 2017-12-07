@@ -1,8 +1,8 @@
 {
 	"manifest_version": 2,
 	"name": "Monkey Business",
-	"version": "0.1",
-	"description": "Replaces words with fun text",
+	"version": "0.2",
+	"description": "Replaces words with fun text, including curses.",
 	"content_scripts":
 	[
 		{

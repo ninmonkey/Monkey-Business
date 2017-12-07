@@ -1,8 +1,23 @@
-// todo: also make 'original' an array
 let replacement_list = [
     {
-        original: ["fuck you", "fuk you"],
-        new_value: ["🖕 you"],
+        original: ["mother fucker"],
+        new_value: ["mom-sexer", "mother fricker", "incestial coitus", "Oedipusal urges intensify"],
+    },
+    {
+        original: ["whore", "slut"],
+        new_value: ["sex enthusiast", "frequent genital flyer"],
+    },
+    {
+        original: ["hype"],
+        new_value: ["over-enthusiastic-reach-around", "On 🔥 On 🔥!"],
+    },
+    {
+        original: ["cunt", "cunty"],
+        new_value: ["see you next tuesday 😊"],
+    },
+    {
+        original: ["pussy", "cat", "puss"],
+        new_value: ["🐱", "meow"],
     },
     {
         original: ["fucking"],
@@ -16,9 +31,81 @@ let replacement_list = [
         original: ["shit"],
         new_value: ["💩", "👎", "★☆☆☆☆ 1/5"],
     },
+    {
+        original: ["mra", "redpill"],
+        new_value: ["boys scared by women", "Women?! I'm a ferengi ACK ACK ACK"],
+    },
+    {
+        original: ["asshole", "butthole"],
+        new_value: ["🍑🕳", "nature's pocket", "coinpurse"],
+    },
+    {
+        original: ["edgy", "edge"],
+        new_value: ["🔪"],
+    },
+    {
+        original: ["Flat Earth", "Flat Earther", "Flat-Earther"],
+        new_value: ["I drink lead paint.", "I sniff glue"],
+    },
+    {
+        original: ["debate"],
+        new_value: ["fisticuffs", "👊icuffs", "I took Philosophy 101"],
+    },
+    {
+        original: ["white knight"],
+        new_value: ["I'm afraid of decent interactions with women.",
+            "I don't hate women, but FEMALES reee!",
+            "I respect women, but...",
+        ],
+    },
+    {
+        original: ["troll"],
+        new_value: ["aroused by being edgy", "thinks he's clever"],
+    },
+    {
+        original: ["hell"],
+        new_value: ["H-E double hockey sticks", "text input on iOS"],
+    },
+    {
+        original: ["cuck"],
+        new_value: ["Partner over-share"],
+    },
+    {
+        original: ["sjw"],
+        new_value: ["skeleton"],
+    },
+    {
+        original: ["ass", "butt"],
+        new_value: ["🍑"],
+    },
+
+    {
+        original: ["omg"],
+        new_value: ["oh your god", "ermahgerd"],
+    },
+    {
+        original: ["kek"],
+        new_value: ["😂", "😹", "🤣", "ayy lmao"],
+    },
+    {
+        original: ["penis"],
+        new_value: ["🍆"],
+    },
+    {
+        original: ["bot"],
+        new_value: ["🤖"],
+    },
 ];
 
-console.log("Monkey Business");
+// todo: custom list for discord and /r/waiaas
+let waiaas_list = [
+    {
+        original: ["peyton"],
+        new_value: ["🦐", "weebury"],
+    },
+];
+
+// console.log("Monkey Business");
 walk(document.body);
 
 if (window.MutationObserver) {
@@ -75,27 +162,18 @@ function handleText(textNode) {
 
     let oldValue = textNode.nodeValue;
     let v = oldValue;
-    // let replacements = ["tooting", "flipping", "fracking", "frik'n", "beeping", "#%&!$@!"];
-
-    // // todo: each replace uses a random item instead
-    // let re = /fucking/gi;
-    // let replacement = random_array_item(replacements);
-    // v = v.replace(re, replacement);
-
 
     replacement_list.forEach(function(replacement) {
 
-        // if boundries:
-        // let s = "\\b" + replacement.original + "\\b";
         let original_list = replacement.original;
 
         original_list.forEach(function(original) {
-            let s = "\\b" + original + "\\b";
-            let re = new RegExp(s, 'gi');
-            let new_values = replacement['new_value'];
-            let new_value = random_array_item(new_values);
+            // Haven't fully decided whether to use boundries
+            let match_original = "\\b" + original + "\\b";
+            let re = new RegExp(match_original, 'gi');
+            let new_value = random_array_item(replacement.new_value);
 
-            // console.log("re:", re, "\nnew:", new_value);
+            // console.log("re:", re, "\nnew:", new_value); // note: console is very slow
             v = v.replace(re, new_value);
         });
 
