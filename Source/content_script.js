@@ -1,3 +1,19 @@
+// todo: also make 'original' an array
+let replacement_list = [
+    {
+        original: "fucking",
+        new_value: ["tooting", "flipping", "fracking", "frik'n", "beeping", "#%&!$@!"],
+    },
+    {
+        original: "fuck",
+        new_value: ["frak", "beep", "frik", "effing", "beep", "#%&!"],
+    },
+    {
+        original: "shit",
+        new_value: ["💩", "👎", "★☆☆☆☆ 1/5"],
+    },
+];
+
 console.log("Monkey Business");
 walk(document.body);
 
@@ -43,7 +59,6 @@ function walk(node) {
     }
 }
 
-let replacement_list = [];
 function random_array_item(items) {
     return items[Math.floor(Math.random()*items.length)];
 }
@@ -56,12 +71,29 @@ function handleText(textNode) {
 
     let oldValue = textNode.nodeValue;
     let v = oldValue;
-    let replacements = ["tooting", "flipping", "fracking", "frik'n", "beeping", "#%&!$@!"];
+    // let replacements = ["tooting", "flipping", "fracking", "frik'n", "beeping", "#%&!$@!"];
 
-    // todo: each replace uses a random item instead
-    let re = /fucking/gi;
-    let replacement = random_array_item(replacements);
-    v = v.replace(re, replacement);
+    // // todo: each replace uses a random item instead
+    // let re = /fucking/gi;
+    // let replacement = random_array_item(replacements);
+    // v = v.replace(re, replacement);
+
+
+    replacement_list.forEach(function(replacement) {
+        // console.log("re: ", replacement.original);
+        // let s = "\b" + replacement.original + "\b";
+        let s = replacement.original;
+        let re = new RegExp(s, 'gi');
+        let new_values = replacement['new_value'];
+        let new_value = random_array_item(new_values);
+        console.log("re:", re, "\nnew:", new_value);
+        v = v.replace(re, new_value);
+        // let re = new RegExp(replacement, 'gi');
+        // v
+        //     var myRe = new RegExp('d(b+)d', 'g');
+        //     var myArray = myRe.exec('cdbbdbsbz');
+    });
+
 
 
     // v = v.replace(/\bthe(s?)\b/ig, "skeleton$1");
