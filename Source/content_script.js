@@ -1,15 +1,19 @@
 // todo: also make 'original' an array
 let replacement_list = [
     {
-        original: "fucking",
+        original: ["fuck you", "fuk you"],
+        new_value: ["🖕 you"],
+    },
+    {
+        original: ["fucking"],
         new_value: ["tooting", "flipping", "fracking", "frik'n", "beeping", "#%&!$@!"],
     },
     {
-        original: "fuck",
+        original: ["fuck"],
         new_value: ["frak", "beep", "frik", "effing", "beep", "#%&!"],
     },
     {
-        original: "shit",
+        original: ["shit"],
         new_value: ["💩", "👎", "★☆☆☆☆ 1/5"],
     },
 ];
@@ -80,29 +84,24 @@ function handleText(textNode) {
 
 
     replacement_list.forEach(function(replacement) {
-        // console.log("re: ", replacement.original);
-        // let s = "\b" + replacement.original + "\b";
-        let s = replacement.original;
-        let re = new RegExp(s, 'gi');
-        let new_values = replacement['new_value'];
-        let new_value = random_array_item(new_values);
-        console.log("re:", re, "\nnew:", new_value);
-        v = v.replace(re, new_value);
-        // let re = new RegExp(replacement, 'gi');
-        // v
-        //     var myRe = new RegExp('d(b+)d', 'g');
-        //     var myArray = myRe.exec('cdbbdbsbz');
+
+        // if boundries:
+        // let s = "\\b" + replacement.original + "\\b";
+        let original_list = replacement.original;
+
+        original_list.forEach(function(original) {
+            let s = "\\b" + original + "\\b";
+            let re = new RegExp(s, 'gi');
+            let new_values = replacement['new_value'];
+            let new_value = random_array_item(new_values);
+
+            // console.log("re:", re, "\nnew:", new_value);
+            v = v.replace(re, new_value);
+        });
+
+        if (v !== oldValue) {
+            textNode.nodeValue = v;
+        }
     });
 
-
-
-    // v = v.replace(/\bthe(s?)\b/ig, "skeleton$1");
-    // v = v.replace(/\bchrome\b/ig, "skeletonism");
-    // v = v.replace(/\bcode\b/ig, "kjittycat");
-    // v = v.replace(/\b(a)n (skeletons?)\b/ig, "$1 $2");
-    // v = v.replace(/\b(s)ocial justice (warriors?)/ig, "$1keleton $2");
-
-    if (v !== oldValue) {
-        textNode.nodeValue = v;
-    }
 }
